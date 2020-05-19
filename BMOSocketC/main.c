@@ -29,7 +29,7 @@ int main(int argc, const char * argv[]) {
     };
     // AF_INET=ipv4      e   AF_INET6=ipv6
     // SOCK_STREAM=TCP   e   SOCK_DGRAM=UDP
-    // O terceiro argumento é para se desejassemos especificar algum
+    // O terceiro argumento é para se desejassemos especificar algum protocolo
     int socketServer = socket(AF_INET, SOCK_STREAM, 0); //Cria e retorna o Número de socket do servidor
     
     
@@ -43,7 +43,7 @@ int main(int argc, const char * argv[]) {
     
     // A função bind() serve para alocar um endereço+porta na rede local(ou Socket ao qual deseja associar esse endereço)
     bind(socketServer, (struct sockaddr *) &saddr, sizeof saddr); //O terceiro argumento(saddr) é o tamnho em bytes do segundo arg.
-    listen(socketServer, 5);    // O segundo argumento defini o numero de conexões permitidas neste socket
+    listen(socketServer, 5);    // O segundo argumento define o numero de conexões permitidas neste socket
     
     
     

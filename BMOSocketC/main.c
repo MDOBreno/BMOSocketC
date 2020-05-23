@@ -36,7 +36,7 @@ int main(int argc, const char * argv[]) {
     
     // CLIENTE
     struct sockaddr_in caddr;               //Informações do Cliente [Como Endereço e Porta ultilizadas pelo Cliente]
-    int caddrSize  = sizeof caddr;              // Tamanho em bytes das informações do cliente
+    socklen_t caddrSize = sizeof caddr;         // Tamanho em bytes das informações do cliente
     int socketCliente;                          // Número de socket do cliente
     
     
@@ -48,7 +48,7 @@ int main(int argc, const char * argv[]) {
     
     
     char buff[129];
-    int tamnhoBytesDadosRecebidos;
+    int tamanhoBytesDadosRecebidos;
     
     // Evitar que o programa se encerre, mantendo o programa em listening
     while(1){
@@ -56,9 +56,9 @@ int main(int argc, const char * argv[]) {
         socketCliente = accept(socketServer, (struct sockaddr *) &caddr, &caddrSize);
         
         //Insere os dados(no buff) e Retorna o tamanho desses dados enviados pelo Cliente
-        tamnhoBytesDadosRecebidos = recv(socketCliente, buff, sizeof buff, 0);  //O ultimo argumento define como recv() trabalha para retornar os dados
+        tamanhoBytesDadosRecebidos = recv(socketCliente, buff, sizeof buff, 0);  //O ultimo argumento define como recv() trabalha para retornar os dados
         //Faz o Inverso do recv()
-        send(socketCliente, buff, tamnhoBytesDadosRecebidos, 0);
+        send(socketCliente, buff, tamanhoBytesDadosRecebidos, 0);
         
         //'Print' no terminal
         puts(buff);
